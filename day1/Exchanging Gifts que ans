@@ -1,0 +1,30 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        int[] indegree = new int[n + 1];   // gifts received
+        int[] outdegree = new int[n + 1];  // gifts given
+
+        for (int i = 0; i < m; i++) {
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+
+            outdegree[a]++; // a gave gift
+            indegree[b]++;  // b received gift
+        }
+
+        for (int i = 1; i <= n; i++) {
+            if (outdegree[i] == 0 && indegree[i] == n - 1) {
+                System.out.println(i);
+                return;
+            }
+        }
+
+        System.out.println(-1);
+    }
+}
