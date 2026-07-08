@@ -1,0 +1,21 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine().trim();
+
+        char col = s.charAt(0);   // alphabet part
+        char row = s.charAt(1);   // number part
+
+        int x = col - 'a' + 1;    // a=1, b=2, ..., h=8
+        int y = row - '0';        // numeric row
+
+        // If sum is even => Black, else White
+        if ((x + y) % 2 == 0) {
+            System.out.println("Black");
+        } else {
+            System.out.println("White");
+        }
+    }
+}
