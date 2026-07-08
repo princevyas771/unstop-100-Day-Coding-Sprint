@@ -1,0 +1,32 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = Integer.parseInt(sc.nextLine().trim());
+        String[] arr = new String[n];
+        Map<String, Integer> freq = new HashMap<>();
+
+        // Read strings and count frequency
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextLine().trim();
+            freq.put(arr[i], freq.getOrDefault(arr[i], 0) + 1);
+        }
+
+        int k = Integer.parseInt(sc.nextLine().trim());
+
+        int count = 0;
+        for (String s : arr) {
+            if (freq.get(s) == 1) { // unique string
+                count++;
+                if (count == k) {
+                    System.out.println(s);
+                    return;
+                }
+            }
+        }
+
+        System.out.println("-1");
+    }
+}
