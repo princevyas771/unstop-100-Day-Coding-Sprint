@@ -1,0 +1,43 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int N = Integer.parseInt(br.readLine().trim());
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        ArrayList<Integer> list = new ArrayList<>();
+
+        for (int i = 0; i < N; i++) {
+            int x = Integer.parseInt(st.nextToken());
+
+            if (x >= 0) {
+                list.add(x);
+            } else {
+                int need = -x;
+                int sum = 0;
+                int idx = list.size() - 1;
+
+                while (idx >= 0 && sum < need) {
+                    sum += list.get(idx);
+                    idx--;
+                }
+
+                while (list.size() - 1 > idx) {
+                    list.remove(list.size() - 1);
+                }
+
+                list.add(need);
+            }
+        }
+
+        long ans = 0;
+        for (int v : list) {
+            ans += v;
+        }
+
+        System.out.println(ans);
+    }
+}
