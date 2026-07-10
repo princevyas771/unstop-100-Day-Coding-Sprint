@@ -1,0 +1,36 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String components = sc.next();
+        int n = sc.nextInt();
+
+        HashSet<Character> allowed = new HashSet<>();
+        for (char c : components.toCharArray()) {
+            allowed.add(c);
+        }
+
+        int count = 0;
+
+        for (int i = 0; i < n; i++) {
+            String model = sc.next();
+            boolean valid = true;
+
+            for (char c : model.toCharArray()) {
+                if (!allowed.contains(c)) {
+                    valid = false;
+                    break;
+                }
+            }
+
+            if (valid) {
+                count++;
+            }
+        }
+
+        System.out.println(count);
+        sc.close();
+    }
+}
